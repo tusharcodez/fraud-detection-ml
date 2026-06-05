@@ -60,3 +60,12 @@ Standard accuracy metrics fail on imbalanced fraud datasets. This project addres
 ---
 
 ## Methodology
+
+Raw Data
+└── EDA & Class Imbalance Analysis (0.13% fraud rate)
+└── Feature Engineering (balance deltas, zero-balance flags)
+└── Class Imbalance Handling
+└── Model Training — XGBoost / Random Forest / LightGBM
+└── Threshold Optimization (Precision-Recall curve)
+└── Evaluation (Confusion Matrix, ROC-AUC, F1)
+└── Model Comparison & Final Selection
