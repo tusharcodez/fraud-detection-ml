@@ -60,12 +60,21 @@ Standard accuracy metrics fail on imbalanced fraud datasets. This project addres
 ---
 
 ## Methodology
+## Methodology
 
+```text
 Raw Data
-└── EDA & Class Imbalance Analysis (0.13% fraud rate)
-└── Feature Engineering (balance deltas, zero-balance flags)
-└── Class Imbalance Handling
-└── Model Training — XGBoost / Random Forest / LightGBM
-└── Threshold Optimization (Precision-Recall curve)
-└── Evaluation (Confusion Matrix, ROC-AUC, F1)
-└── Model Comparison & Final Selection
+   └── EDA & Class Imbalance Analysis (0.13% fraud rate)
+         └── Feature Engineering (balance deltas, zero-balance flags)
+               └── Class Imbalance Handling
+                     └── Model Training — XGBoost / Random Forest / LightGBM
+                           └── Threshold Optimization (Precision-Recall curve)
+                                 └── Evaluation (Confusion Matrix, ROC-AUC, F1)
+                                       └── Model Comparison & Final Selection
+```
+
+**Why ensemble models?**
+- Capture complex non-linear relationships between features
+- Robust to outliers and skewed distributions
+- Native support for class imbalance via `scale_pos_weight` (XGBoost) and `class_weight` (RF)
+- Probability outputs enable flexible threshold tuning per business tolerance
