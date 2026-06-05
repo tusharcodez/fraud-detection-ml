@@ -36,7 +36,7 @@ Standard accuracy metrics fail on imbalanced fraud datasets. This project addres
 |---|---|
 | Accuracy | `99.2%` |
 | Precision | `92%` |
-| Recall | `-84%` |
+| Recall | `84%` |
 | ROC-AUC | `0.97%` |
 | False Negative Rate | `28%` |
 
