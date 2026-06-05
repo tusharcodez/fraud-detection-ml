@@ -6,6 +6,7 @@
 ![Python](https://img.shields.io/badge/Python-3.13-blue?style=flat-square&logo=python)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-orange?style=flat-square&logo=scikit-learn)
 ![XGBoost](https://img.shields.io/badge/XGBoost-0.9973_AUC-brightgreen?style=flat-square)
+![LightGBM](https://img.shields.io/badge/LightGBM-0.9974_AUC-brightgreen?style=flat-square)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat-square&logo=jupyter)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square)
 
@@ -60,7 +61,6 @@ Standard accuracy metrics fail on imbalanced fraud datasets. This project addres
 ---
 
 ## Methodology
-## Methodology
 
 ```text
 Raw Data
@@ -78,3 +78,72 @@ Raw Data
 - Robust to outliers and skewed distributions
 - Native support for class imbalance via `scale_pos_weight` (XGBoost) and `class_weight` (RF)
 - Probability outputs enable flexible threshold tuning per business tolerance
+
+---
+
+## Key Findings
+
+- `TRANSFER` and `CASH_OUT` transaction types account for ~100% of all fraud cases
+- Fraudulent transactions almost always result in a zero balance for the origin account
+- `balance_delta_orig` is the single strongest predictor of fraud
+- High-value transactions (> $200K) carry disproportionately higher fraud risk
+- XGBoost and LightGBM achieve near-identical ROC-AUC (0.9973 vs 0.9974) — both production-viable
+
+---
+
+## Project Structure
+
+```
+fraud-detection-ml/
+│
+├── fraud_detection_analysis.ipynb   # Full pipeline: EDA → modelling → evaluation
+├── requirements.txt                  # Python dependencies
+└── README.md
+```
+
+---
+
+## Setup & Reproduction
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/tusharcodez/fraud-detection-ml
+cd fraud-detection-ml
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Launch notebook
+jupyter notebook fraud_detection_analysis.ipynb
+```
+
+**Dependencies:** `pandas` `numpy` `scikit-learn` `xgboost` `lightgbm` `matplotlib` `seaborn` `imbalanced-learn` `joblib`
+
+---
+
+## Future Work
+
+- **Real-time Scoring Pipeline** — Wrap final model in a FastAPI REST endpoint for low-latency inference
+- **Advanced Imbalance Handling** — Experiment with SMOTE, ADASYN, and cost-sensitive learning
+- **Feature Expansion** — Add velocity features (transactions per account in last N minutes), time-of-day signals
+- **Model Explainability** — Apply SHAP values for per-prediction feature attribution and compliance auditing
+- **Drift Monitoring** — Implement data drift detection to flag when transaction patterns shift and retraining is needed
+- **Neural Baseline** — Benchmark against TabNet or MLP to quantify ensemble advantage
+
+---
+
+## Skills Demonstrated
+
+`XGBoost` `LightGBM` `Random Forest` `Imbalanced Classification` `Feature Engineering` `ROC-AUC Analysis` `Threshold Tuning` `EDA` `Python` `Scikit-learn` `Pandas`
+
+---
+
+## Author
+
+**Tushar** — Data Analyst | [GitHub](https://github.com/tusharcodez)
+
+---
+
+<div align="center">
+<sub>Capstone Project — Boston Institute of Analytics, PG Diploma in Data Science & Generative AI</sub>
+</div>
